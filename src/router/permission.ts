@@ -30,21 +30,31 @@ import Chart from './modules/chart'
 import Print from './modules/print'
 import Community from './modules/community'
 import Tab from './modules/tab'
+import businessManage from "@/router/modules/businessManage";
+import userManage from "@/router/modules/userManage";
+import orderManage from "@/router/modules/orderManage"
 
 /** 登录后需要动态加入的本地路由 */
 const asyncRoutes: Route[] = [
-  ...Dashboard,
-  ...Document,
-  ...Component,
-  ...Pages,
-  ...Menu,
-  ...Directive,
-  ...Chart,
-  ...SystemManage,
-  ...Print,
-  ...Community,
-  ...Tab,
+    ...Dashboard,
+    ...businessManage,
+    ...userManage,
+    ...orderManage,
 ]
+// const asyncRoutes: Route[] = [
+//   ...Dashboard,
+//   ...businessManage,
+//   ...Document,
+//   ...Component,
+//   ...Pages,
+//   ...Menu,
+//   ...Directive,
+//   ...Chart,
+//   ...SystemManage,
+//   ...Print,
+//   ...Community,
+//   ...Tab,
+// ]
 
 /** 
  * @name 动态路由的权限新增，供登录后调用

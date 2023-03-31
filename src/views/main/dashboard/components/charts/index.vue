@@ -20,8 +20,8 @@ import circleChart from './circleChart.vue'
 export default defineComponent({
   components: {
     barChart,
-    pieChart,
-    circleChart
+    // pieChart,
+    // circleChart
   },
   setup() {
 

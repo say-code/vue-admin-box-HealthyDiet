@@ -3,9 +3,27 @@ import request from '@/utils/system/request'
 // 获取数据api
 export function getData(data: object) {
   return request({
-    url: '/system/user/list',
+    url: '/manage/select/employee',
     method: 'post',
-    baseURL: '/mock',
+    baseURL: '/apis',
+    data
+  })
+}
+
+
+export function getDataByBusiness() {
+  return request({
+    url: '/business/select',
+    method: 'get',
+    baseURL: '/apis',
+  })
+}
+
+export function getDataByUser(data: object) {
+  return request({
+    url: '/user/all',
+    method: 'post',
+    baseURL: '/apis',
     data
   })
 }
@@ -13,9 +31,26 @@ export function getData(data: object) {
 // 新增
 export function add(data: object) {
   return request({
-    url: '/system/user/add',
+    url: '/manage/register',
     method: 'post',
-    baseURL: '/mock',
+    baseURL: '/apis',
+    data
+  })
+}
+
+export function addBusiness(data: object) {
+  return request({
+    url: '/business/insert',
+    method: 'post',
+    baseURL: '/apis',
+    data
+  })
+}
+export function addUser(data: object) {
+  return request({
+    url: '/user/alter',
+    method: 'post',
+    baseURL: '/apis',
     data
   })
 }
@@ -23,9 +58,27 @@ export function add(data: object) {
 // 编辑
 export function update(data: object) {
   return request({
-    url: '/system/user/update',
+    url: '/employee/update',
+    method: 'put',
+    baseURL: '/apis',
+    data,
+  })
+}
+
+export function updateUser(data: object) {
+  return request({
+    url: '/user/alter',
     method: 'post',
-    baseURL: '/mock',
+    baseURL: '/apis',
+    data,
+  })
+}
+
+export function updateBusiness(data: object) {
+  return request({
+    url: '/business/alter',
+    method: 'post',
+    baseURL: '/apis',
     data
   })
 }
@@ -43,9 +96,17 @@ export function updateStatus(data: object) {
 // 删除
 export function del(data: object) {
   return request({
-    url: '/system/user/del',
+    url: '/manage/del',
     method: 'post',
-    baseURL: '/mock',
+    baseURL: '/apis',
     data
   })
 }
+  export function delBusiness(data: object) {
+    return request({
+      url: '/business/del',
+      method: 'post',
+      baseURL: '/apis',
+      data
+    })
+  }

@@ -1,13 +1,15 @@
+import {getAmount} from "@/api/forData";
+
 var xAxis_data = ["01月", "02月", "03月", "04月", "05月", "06月", "07月", "08月", "09月", "10月", "11月", "12月"]
-var data_A = [820, 932, 901, 934, 1290, 1330, 1320, 720, 832, 501, 334, 990]
-var data_B = [720, 832, 501, 334, 990, 830, 720, 620, 732, 801, 1134, 908]
-var data_C = [620, 732, 801, 1134, 908, 930, 920, 820, 932, 901, 934, 1290]
-var names = ['2018年实际管理费用', '2019年预算费用', '2020年实际使用预算']
+
+var names = ['2022年实际管理费用', '销售额', '2022年实际使用预算']
 var color = ['#4D8EFF', '#84BFFF', '#FE9D9A']
 
 const option = {
+
   tooltip: {
     trigger: 'axis',
+
     // formatter: '{b}<br />{a2}:{c2}%<br />{a1}:{c1}%<br />{a0}:{c0}%'
     formatter: function (params, ticket, callback) {
       var htmlStr = '';
@@ -22,7 +24,7 @@ const option = {
         }
         htmlStr += '<div>';
         htmlStr += '<span style="margin-right:5px;display:inline-block;width:10px;height:10px;border-radius:5px;background-color:' + color + ';"></span>';//一个点
-        htmlStr += seriesName + '：' + value + '万元';//圆点后面显示的文本
+        htmlStr += seriesName + '：' + value + '元';//圆点后面显示的文本
         htmlStr += '</div>';
       }
       return htmlStr;
@@ -98,7 +100,7 @@ const option = {
     {
       type: 'bar',
       name: names[1],
-      data: data_A,
+      data: [],
       symbolSize: 9, //设置拐点大小
       itemStyle: {
         color: color[0]
@@ -107,44 +109,46 @@ const option = {
         width: 2,
         type: 'solid'  //'dotted'虚线 'solid'实线
       }
-    }, {
-      type: 'bar',
-      name: names[2],
-      data: data_B,
-      symbolSize: 9, //设置拐点大小
-      itemStyle: {
-        color: color[1]
-      },
-      lineStyle: {
-        width: 2,
-        type: 'solid'  //'dotted'虚线 'solid'实线
-      }
-    }, {
-      type: 'line',
-      name: names[0],
-      data: data_C,
-      symbolSize: 9, //设置拐点大小
-      areaStyle: {
-        color: {
-          type: 'linear',
-          x: 0,
-          y: 0,
-          x2: 0,
-          y2: 1,
-          colorStops: [{
-            offset: 0, color: '#fe9d9a66' // 0% 处的颜色
-          }, {
-            offset: 1, color: '#fe9d9a00' // 100% 处的颜色
-          }],
-          global: false // 缺省为 false
-        }
-      },
-      color: color[2], //设置颜色
-      lineStyle: {
-        width: 2,
-        type: 'solid'  //'dotted'虚线 'solid'实线
-      }
     },
+    // {
+    //   type: 'bar',
+    //   name: names[2],
+    //   data: data_B,
+    //   symbolSize: 9, //设置拐点大小
+    //   itemStyle: {
+    //     color: color[1]
+    //   },
+    //   lineStyle: {
+    //     width: 2,
+    //     type: 'solid'  //'dotted'虚线 'solid'实线
+    //   }
+    // },
+    // {
+    //   type: 'line',
+    //   name: names[0],
+    //   data: data_C,
+    //   symbolSize: 9, //设置拐点大小
+    //   areaStyle: {
+    //     color: {
+    //       type: 'linear',
+    //       x: 0,
+    //       y: 0,
+    //       x2: 0,
+    //       y2: 1,
+    //       colorStops: [{
+    //         offset: 0, color: '#fe9d9a66' // 0% 处的颜色
+    //       }, {
+    //         offset: 1, color: '#fe9d9a00' // 100% 处的颜色
+    //       }],
+    //       global: false // 缺省为 false
+    //     }
+    //   },
+    //   color: color[2], //设置颜色
+    //   lineStyle: {
+    //     width: 2,
+    //     type: 'solid'  //'dotted'虚线 'solid'实线
+    //   }
+    // },
   ]
 }
 

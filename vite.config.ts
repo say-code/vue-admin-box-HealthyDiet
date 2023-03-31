@@ -26,7 +26,7 @@ const alias: Record<string, string> = {
 export default ({ command }: ConfigEnv): UserConfigExport => {
   const prodMock = true;
   return {
-    base: './',
+    // base: './',
     resolve: {
       alias
     },
@@ -35,18 +35,29 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
       host: '0.0.0.0',
       open: true,
       proxy: { // 代理配置
-        '/dev': 'https://www.fastmock.site/mock/48cab8545e64d93ff9ba66a87ad04f6b/'
+        '/dev': 'https://www.fastmock.site/mock/48cab8545e64d93ff9ba66a87ad04f6b/',
+        '/apis': {
+          // target: 'http://' + env.VUE_APP_BASE_API,
+          target: 'http://localhost:8080', //
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/apis/, '')
+        },
+
       },
     },
     build: {
+      chunkSizeWarningLimit: 1500,
       rollupOptions: {
-        output: {
-          manualChunks: {
-            'echarts': ['echarts']
+        output:{
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              return id.toString().split('node_modules/')[1].split('/')[0].toString();
+            }
           }
         }
       }
     },
+
     plugins: [
       vue(),
       viteMockServe({

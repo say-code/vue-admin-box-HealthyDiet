@@ -3,9 +3,9 @@ import request from '@/utils/system/request'
 /** 登录api */
 export function loginApi(data: object) {
   return request({
-    url: '/user/login',
+    url: '/manage/login',
     method: 'post',
-    baseURL: '/mock',
+    baseURL: '/apis',
     data
   })
 }
